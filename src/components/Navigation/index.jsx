@@ -10,7 +10,7 @@ function Navigation() {
       </Link>
       <ul>
         <li>
-          <Link to='/todo' className={styles.item}>Todos</Link>
+          <Link to='/todos' className={styles.item}>Todos</Link>
         </li>
         <li>
           <Link to='/about' className={styles.item}>About</Link>
