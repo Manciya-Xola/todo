@@ -9,9 +9,8 @@
 }
 main{
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
   flex-grow: 1;
   color: black;
-  background-color: red;
+  padding: 13px 31px;
 }
