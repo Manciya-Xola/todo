@@ -1,0 +1,20 @@
+.container{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 449px;
+  height: 51px;
+  bottom: 0px;
+  background: #5AA480;
+}
+h5{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 15px;
+  /* identical to box height */
+
+
+  color: #FFFFFF;
+}
