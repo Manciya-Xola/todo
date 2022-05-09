@@ -2,11 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
+  justify-content: center;
+  /* position: relative; */
   height: 100vh;
+  width: 446px;
 }
-.main{
+main{
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   flex-grow: 1;
   color: black;
+  background-color: red;
 }
