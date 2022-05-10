@@ -26,8 +26,13 @@ export const reducer = (state, action) => {
       const newTodo = state.filter(todo => todo.id !==action.payload)
       return newTodo;
     case "resetTodo":
-      // console.log(action.type)
       return initialState;
+    case "toggleTask":
+      return state.map((todo) =>
+        todo.id === action.payload
+          ? { ...todo, isComplete: !todo.isComplete }
+          : todo
+        );
     default:
       return state;
   }

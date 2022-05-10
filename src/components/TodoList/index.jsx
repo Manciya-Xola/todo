@@ -27,6 +27,9 @@ function TodoList() {
     dispatch({type:"addTodo", payload: title});
     setIsFormVisible(false)
   }
+  function onCompleteTodo(title) {
+    dispatch({type:"toggleTask", payload: title});
+  }
   return (
     <div className={styles.container}>
       <div className={styles.incomplete}>
@@ -45,6 +48,7 @@ function TodoList() {
                   id={item.id} 
                   isComplete={item.isComplete} 
                   onDeleteTodo={onDeleteTodo} 
+                  onCompleteTodo={onCompleteTodo}
                   key={item.id}/>
               )
             )
@@ -63,6 +67,7 @@ function TodoList() {
                   id={item.id} 
                   isComplete={item.isComplete} 
                   onDeleteTodo={onDeleteTodo} 
+                  onCompleteTodo={onCompleteTodo}
                   key={item.id}/>
               )
             )
