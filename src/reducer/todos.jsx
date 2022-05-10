@@ -16,16 +16,16 @@ export const initialState = [
   },
 ];
 export const reducer = (state, action) => {
-  // let newState;
   switch (action.type) {
     case "AddTodo":
-      console.log('complete')
+      console.log(action.type)
       return state;
     case "deleteTodo":
-      console.log('complete')
-      return state;
+      const newTodos = state.filter(todo => todo.id !==action.payload)
+      console.log(action.type)
+      return newTodos;
     case "resetTodo":
-      console.log('complete')
+      console.log(action.type)
       return state;
     default:
       return state;
