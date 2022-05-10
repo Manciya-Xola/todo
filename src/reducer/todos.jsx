@@ -22,11 +22,11 @@ export const reducer = (state, action) => {
       return state;
     case "deleteTodo":
       const newTodos = state.filter(todo => todo.id !==action.payload)
-      console.log(action.type)
+      // console.log(action.type)
       return newTodos;
     case "resetTodo":
-      console.log(action.type)
-      return state;
+      // console.log(action.type)
+      return initialState;
     default:
       return state;
   }
