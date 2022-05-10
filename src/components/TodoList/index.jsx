@@ -1,35 +1,18 @@
-import React,{useState} from 'react'
+import React,{useReducer} from 'react'
 
 
+import { reducer, initialState } from '../../reducer/todos';
 import Todo from '../Todo';
 
-const initialTodos = [
-  {
-    id: 0,
-    title: 'Clean dishes',
-    isComplete: false,
-  },
-  {
-    id: 1,
-    title: 'Take out trash',
-    isComplete: false,
-  },
-  {
-    id: 2,
-    title: 'Feed pets',
-    isComplete: true,
-  },
-];
-
 function TodoList() {
-  const [todos, setTodos] = useState(() => initialTodos);
+  const [state, despatch] = useReducer(reducer, initialState);
   return (
     <div>
       <div>
         <h2>To do</h2>
         <div>
           {
-            todos.filter(isComplete => !isComplete.isComplete).map((item) =>(
+            state.filter(isComplete => !isComplete.isComplete).map((item) =>(
               <Todo title={item.title} id={item.id} isComplete={item.isComplete}/>
               )
             )
@@ -40,7 +23,7 @@ function TodoList() {
         <h2>Complete</h2>
         <div>
           {
-            todos.filter(isComplete => isComplete.isComplete).map((item) =>(
+            state.filter(isComplete => isComplete.isComplete).map((item) =>(
               <Todo title={item.title} id={item.id} isComplete={item.isComplete}/>
               )
             )
