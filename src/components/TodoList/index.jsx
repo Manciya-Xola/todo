@@ -1,11 +1,14 @@
-import React,{useReducer} from 'react'
+import React,{useReducer, useState} from 'react'
 
 
 import { reducer, initialState } from '../../reducer/todos';
+import NewTodoForm from '../NewTodoForm';
 import Todo from '../Todo';
 import styles from "./TodoList.module.css";
 
 function TodoList() {
+
+  const [isFormVisible, setIsFormVisible] = useState(false);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -16,13 +19,20 @@ function TodoList() {
   function onResetButtonClicked() {
     dispatch({type: "resetTodo"});
   }
-  
+  function onAddTodoClick() {
+    setIsFormVisible(true)
+  }
+  function onAddNewTodo(title) {
+    // console.log(title);
+    dispatch({type:"addTodo", payload: title});
+    setIsFormVisible(false)
+  }
   return (
     <div className={styles.container}>
       <div className={styles.incomplete}>
         <div className={styles.buttons}>
           <button onClick={onResetButtonClicked} className={styles.button}>Reset</button>
-          <button className={styles.button}>Add Todo</button>
+          <button onClick={onAddTodoClick} className={styles.button}>Add Todo</button>
         </div>
         <h2>To do</h2>
         <div>
@@ -59,6 +69,7 @@ function TodoList() {
           }
         </div>
       </div>
+      {isFormVisible ? <NewTodoForm onAddNewTodo={onAddNewTodo} /> : null} 
     </div>
   )
 }
