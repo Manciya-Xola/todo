@@ -1,4 +1,4 @@
-import React,{useReducer, useState} from 'react'
+import React,{useReducer, useState, useEffect} from 'react'
 
 
 import { reducer, initialState } from '../../reducer/todos';
@@ -12,6 +12,8 @@ function TodoList() {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const [color, setColor] = useState('#C4C4C4');
+
   function onDeleteTodo(id) {
     // console.log(id);
     dispatch({type: "deleteTodo", payload: id});
@@ -22,9 +24,10 @@ function TodoList() {
   function onAddTodoClick() {
     setIsFormVisible(true)
   }
-  function onAddNewTodo(title) {
+  function onAddNewTodo(title, color='') {
     // console.log(title);
-    dispatch({type:"addTodo", payload: title});
+    setColor(color)
+    dispatch({type:"addTodo", payload: {title:title, color: color}});
     setIsFormVisible(false)
   }
   function onCompleteTodo(title) {
@@ -49,6 +52,7 @@ function TodoList() {
                   isComplete={item.isComplete} 
                   onDeleteTodo={onDeleteTodo} 
                   onCompleteTodo={onCompleteTodo}
+                  bgColor={item?.color || '' }
                   key={item.id}/>
               )
             )
@@ -68,6 +72,7 @@ function TodoList() {
                   isComplete={item.isComplete} 
                   onDeleteTodo={onDeleteTodo} 
                   onCompleteTodo={onCompleteTodo}
+                  bgColor={item?.color || '' }
                   key={item.id}/>
               )
             )
