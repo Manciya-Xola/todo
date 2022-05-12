@@ -5,7 +5,11 @@ import Header from '../Header';
 
 import styles from './Layout.module.css';
 
-function Layout({children}) {
+
+type Props={
+  children: JSX.Element
+}
+function Layout({children}:Props) {
   return (
     <div className={styles.container}>
       <Header/>
