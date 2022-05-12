@@ -44,6 +44,48 @@
   font-weight: 400;
   font-size: 26px;
   line-height: 31px;
-
+  margin-bottom: 20px;
   color: #000000;
+  text-align: center;
+}
+.pick{
+  width: 341px;
+  height: 62px;
+  cursor: pointer;
+  display:inline-block;
+  border:1px solid #CCC;
+  background:#DDD;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+  cursor:pointer;
+  vertical-align:middle;
+  padding: 5px;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 31px;
+  margin-bottom: 20px;
+  color: #000000;
+  text-align: center;
+}
+.pick:active {
+  color:red;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+}
+.popover{
+  position: relative;
+  margin-bottom: 20px;
+}
+.cover{
+  position: 'fixed';
+  top: '0px';
+  right: '0px';
+  bottom: '0px';
+  left: '0px';
+}
+.picker{
+  width: '36px';
+  height: '14px';
+  border-radius: '2px';
+  background-color: gray;
 }

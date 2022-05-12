@@ -20,7 +20,7 @@ export const reducer = (state, action) => {
     case "addTodo":
       const newTodos = [...state];
       const newId = Math.floor(Math.random() * 9999999);
-      newTodos.push({ id: newId, title: action.payload, isComplete: false });
+      newTodos.push({ id: newId, title: action.payload.title, isComplete: false, color:action.payload.color });
       return newTodos;
     case "deleteTodo":
       const newTodo = state.filter(todo => todo.id !==action.payload)
@@ -28,6 +28,7 @@ export const reducer = (state, action) => {
     case "resetTodo":
       return initialState;
     case "toggleTask":
+      
       return state.map((todo) =>
         todo.id === action.payload
           ? { ...todo, isComplete: !todo.isComplete }
