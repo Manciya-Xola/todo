@@ -1,0 +1,42 @@
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  padding: 0px 17px;
+}
+ul{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+li{
+  text-decoration: underline;
+  margin: 0px 15px;
+  color: #FFFFFF;
+}
+.item{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-decoration-line: underline;
+
+  color: #FFFFFF;
+}
+h1{
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 36px;
+  text-decoration: none;
+  color: #FFFFFF;
+}
+.logo{
+  text-decoration: none;
+}

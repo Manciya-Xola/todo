@@ -1,0 +1,16 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* position: relative; */
+  height: 100vh;
+  width: 446px;
+}
+.main{
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  color: black;
+  padding: 13px 31px;
+}
