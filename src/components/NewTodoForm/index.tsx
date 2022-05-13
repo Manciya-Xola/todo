@@ -6,13 +6,21 @@ import "react-color-palette/lib/css/styles.css";
 
 import styles from "./NewTodoForm.module.css";
 
-function NewTodoForm({ onAddNewTodo }) {
+interface Props{
+  onAddNewTodo:(title:String, color: string )=>void;
+}
+type Color = {
+  hex: string;
+  rgb?:any;
+}
+
+function NewTodoForm({ onAddNewTodo }:Props) {
 
   const [title, setTitle] = useState("");
   const [displayColorPicker, setDisplayColorPicker] = useState(false);
-  const [color, setColor] = useState('#C4C4C4');
+  const [color, setColor] = useState<Color>({hex:'#C4C4C4'});
 
-  const decimalToHex = (alpha) =>
+  const decimalToHex = (alpha:number) =>
   alpha === 0 ? '00' : Math.round(255 * alpha).toString(16);
   const hexColor = useMemo(() => {
     if (typeof color === 'string') {
@@ -20,28 +28,26 @@ function NewTodoForm({ onAddNewTodo }) {
     }
     return `${color?.hex}${decimalToHex(color?.rgb?.a)}`;
   }, [color]);
-  function onTitleChange(event) {
-    setTitle(event.currentTarget.value);
-  }
-  function onFormSubmit(event) {
+  // function onTitleChange(event:Event) {
+  //   setTitle((event.target as HTMLInputElement).value);
+  // }
+  function onFormSubmit(event:React.FormEvent<HTMLElement>){
     event.preventDefault();
-    //console.log(color.hex);
     onAddNewTodo(title, color.hex);
   }
   function DisplayColorPicker () {
     setDisplayColorPicker(prev => !prev)
   };
-
-  // function removeColorPicker(){
-  //   setDisplayColorPicker(false )
-  // };
   return (
     <div className={styles.container}>
       <div className={styles.content}>
         <h1>Add Todo</h1>
         <form className={styles.form} onSubmit={onFormSubmit}>
           <label htmlFor="title" className={styles.label}>Title</label>
-          <input type="text" value={title} onChange={onTitleChange} className={styles.input} required/>
+          <input type="text" value={title} 
+            onChange={(e)=> setTitle(e.target.value)} 
+            className={styles.input} 
+            required/>
           <div onClick={DisplayColorPicker } className={styles.pick}>Pick Color</div>
           { displayColorPicker ? 
             <div className={ styles.popover }>
