@@ -1,20 +1,20 @@
-import React,{useReducer, useState} from 'react'
+import React,{useReducer, useState, Reducer } from 'react'
 
 
 import { reducer, initialState } from '../../reducer/todos';
 import NewTodoForm from '../NewTodoForm';
-import Todo from '../Todo';
+import Todo from '../Todo/index';
 import styles from "./TodoList.module.css";
 
 function TodoList() {
 
   const [isFormVisible, setIsFormVisible] = useState(false);
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer<Reducer<any, any>>(reducer, initialState);
 
   const [color, setColor] = useState('#C4C4C4');
 
-  function onDeleteTodo(id) {
+  function onDeleteTodo(id:number) {
     // console.log(id);
     console.log(color);
     dispatch({type: "deleteTodo", payload: id});
@@ -25,14 +25,14 @@ function TodoList() {
   function onAddTodoClick() {
     setIsFormVisible(true)
   }
-  function onAddNewTodo(title, color='') {
+  function onAddNewTodo(title:String, color: string = ''){
     // console.log(title);
     setColor(color)
     dispatch({type:"addTodo", payload: {title:title, color: color}});
     setIsFormVisible(false)
   }
-  function onCompleteTodo(title) {
-    dispatch({type:"toggleTask", payload: title});
+  function onCompleteTodo(id:number) {
+    dispatch({type:"toggleTask", payload: id});
   }
   return (
     <div className={styles.container}>
@@ -45,8 +45,8 @@ function TodoList() {
         <div>
           {
             state
-              .filter(isComplete => !isComplete.isComplete)
-              .map((item) =>(
+              .filter((isComplete:any) => !isComplete.isComplete)
+              .map((item:any) =>(
                 <Todo 
                   title={item.title} 
                   id={item.id} 
@@ -65,8 +65,8 @@ function TodoList() {
         <div>
           {
             state
-              .filter(isComplete => isComplete.isComplete)
-              .map((item) =>(
+              .filter((isComplete:any) => isComplete.isComplete)
+              .map((item:any) =>(
                 <Todo 
                   title={item.title} 
                   id={item.id} 

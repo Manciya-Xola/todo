@@ -1,4 +1,4 @@
-export const initialState = [
+export const initialState:Todo[] =[
   {
     id: 0,
     title: 'Clean dishes',
@@ -15,21 +15,27 @@ export const initialState = [
     isComplete: true,
   },
 ];
-export const reducer = (state, action) => {
+type Todo={
+  id:number;
+  title:String;
+  isComplete:Boolean;
+  color?:String
+}
+export const reducer = (state:[], action:any) => {
   switch (action.type) {
     case "addTodo":
-      const newTodos = [...state];
+      const newTodos:Todo[] = [...state];
       const newId = Math.floor(Math.random() * 9999999);
-      newTodos.push({ id: newId, title: action.payload.title, isComplete: false, color:action.payload.color });
+      const todo:Todo = { id: newId, title: action.payload.title, isComplete: false, color:action.payload.color };
+      newTodos.push(todo);
       return newTodos;
     case "deleteTodo":
-      const newTodo = state.filter(todo => todo.id !==action.payload)
+      const newTodo = state.filter((todo:Todo) => todo.id !==action.payload)
       return newTodo;
     case "resetTodo":
       return initialState;
     case "toggleTask":
-      
-      return state.map((todo) =>
+      return state.map((todo:Todo) =>
         todo.id === action.payload
           ? { ...todo, isComplete: !todo.isComplete }
           : todo
