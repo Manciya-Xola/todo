@@ -16,7 +16,7 @@ function TodoList() {
 
   function onDeleteTodo(id) {
     // console.log(id);
-    sonsole.log(color);
+    console.log(color);
     dispatch({type: "deleteTodo", payload: id});
   }
   function onResetButtonClicked() {
