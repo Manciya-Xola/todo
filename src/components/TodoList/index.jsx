@@ -1,4 +1,4 @@
-import React,{useReducer, useState, useEffect} from 'react'
+import React,{useReducer, useState} from 'react'
 
 
 import { reducer, initialState } from '../../reducer/todos';
@@ -16,6 +16,7 @@ function TodoList() {
 
   function onDeleteTodo(id) {
     // console.log(id);
+    sonsole.log(color);
     dispatch({type: "deleteTodo", payload: id});
   }
   function onResetButtonClicked() {
